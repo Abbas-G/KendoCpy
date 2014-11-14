@@ -38,7 +38,13 @@
             type: "POST",
             dataType: "json",
         }//,
-        //schema: {data: "Data"}
+        //schema: {data: "Data"}, if u have data like {"Data":[{"Id":48,"Name":"abc"}]}
+        //or
+        /*schema : { // if you expect null records from server side
+            parse: function(data) {
+                return data ? data : [];
+            }*/
+        
     })
 });
     </script>
