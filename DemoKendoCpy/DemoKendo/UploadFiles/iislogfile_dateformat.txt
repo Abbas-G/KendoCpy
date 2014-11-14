@@ -1,0 +1,3 @@
+is7 logfile datetime
+http://forums.iis.net/t/1176429.aspx
+http://www.iis.net/configreference/system.applicationhost/sites/sitedefaults/logfile

@@ -1,0 +1,21 @@
+404
+The server could not find the file that the visitor requested. This error commonly occurs when a URL is mistyped or  pages have been moved or deleted. 
+
+304
+http://100pulse.com/http-statuscode/304.jsp
+http://www.checkupdown.com/status/E304.html
+
+HTTP 304 is "not modified". Your web server is basically telling the browser "this file hasn't changed since the last time you requested it." 
+Whereas an HTTP 200 is telling the browser "here is a successful response" - which should be returned when it's either the first time your browser is accessing the file or the first time a modified copy is being accessed.
+
+302
+http://www.checkupdown.com/status/E302.html
+
+500
+There can be innumerable reasons for receiving such error
+Mozilla/4.0+(compatible;+Synapse) 500
+http://security.stackexchange.com/questions/18652/is-this-a-viewstate-attack
+http://blog.discountasp.net/how-to-find-sql-injections-using-your-http-logs/
+
+gone wrong on the web site's serve
+data is invalid

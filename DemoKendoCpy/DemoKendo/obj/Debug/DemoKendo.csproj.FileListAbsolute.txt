@@ -1,0 +1,34 @@
+D:\abbas\kendo\mvc\mvc2\DemoKendo\DemoKendo\bin\DemoKendo.dll
+D:\abbas\kendo\mvc\mvc2\DemoKendo\DemoKendo\bin\DemoKendo.pdb
+D:\abbas\kendo\mvc\mvc2\DemoKendo\DemoKendo\obj\Debug\ResolveAssemblyReference.cache
+D:\abbas\kendo\mvc\mvc2\DemoKendo\DemoKendo\obj\Debug\DemoKendo.dll
+D:\abbas\kendo\mvc\mvc2\DemoKendo\DemoKendo\obj\Debug\DemoKendo.pdb
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\bin\DemoKendo.dll
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\bin\DemoKendo.pdb
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\obj\Debug\ResolveAssemblyReference.cache
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\obj\Debug\DemoKendo.dll
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\obj\Debug\DemoKendo.pdb
+D:\AG\workspace\extras\test\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\bin\DemoKendo.dll
+D:\AG\workspace\extras\test\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\bin\DemoKendo.pdb
+D:\AG\workspace\extras\test\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\obj\Debug\ResolveAssemblyReference.cache
+D:\AG\workspace\extras\test\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\obj\Debug\DemoKendo.dll
+D:\AG\workspace\extras\test\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\obj\Debug\DemoKendo.pdb
+D:\AG\AG Workspace\Extras\AG Rnd-etc\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\bin\DemoKendo.dll
+D:\AG\AG Workspace\Extras\AG Rnd-etc\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\bin\DemoKendo.pdb
+D:\AG\AG Workspace\Extras\AG Rnd-etc\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\obj\Debug\ResolveAssemblyReference.cache
+D:\AG\AG Workspace\Extras\AG Rnd-etc\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\obj\Debug\DemoKendo.dll
+D:\AG\AG Workspace\Extras\AG Rnd-etc\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\DemoKendo\obj\Debug\DemoKendo.pdb
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendoCpy\DemoKendo\bin\DemoKendo.dll
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendoCpy\DemoKendo\bin\DemoKendo.pdb
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendoCpy\DemoKendo\obj\Debug\ResolveAssemblyReference.cache
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendoCpy\DemoKendo\obj\Debug\DemoKendo.dll
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendoCpy\DemoKendo\obj\Debug\DemoKendo.pdb
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendoCpy\DemoKendo\bin\DemoKendo.Core.dll
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendoCpy\DemoKendo\bin\DemoKendo.Core.pdb
+D:\Workspace\RND\extras 2,3,4\mvc2\without_kendo_dll\DemoKendoCpy\DemoKendo\bin\DemoKendo.dll
+D:\Workspace\RND\extras 2,3,4\mvc2\without_kendo_dll\DemoKendoCpy\DemoKendo\bin\DemoKendo.pdb
+D:\Workspace\RND\extras 2,3,4\mvc2\without_kendo_dll\DemoKendoCpy\DemoKendo\bin\DemoKendo.Core.dll
+D:\Workspace\RND\extras 2,3,4\mvc2\without_kendo_dll\DemoKendoCpy\DemoKendo\bin\DemoKendo.Core.pdb
+D:\Workspace\RND\extras 2,3,4\mvc2\without_kendo_dll\DemoKendoCpy\DemoKendo\obj\Debug\ResolveAssemblyReference.cache
+D:\Workspace\RND\extras 2,3,4\mvc2\without_kendo_dll\DemoKendoCpy\DemoKendo\obj\Debug\DemoKendo.dll
+D:\Workspace\RND\extras 2,3,4\mvc2\without_kendo_dll\DemoKendoCpy\DemoKendo\obj\Debug\DemoKendo.pdb

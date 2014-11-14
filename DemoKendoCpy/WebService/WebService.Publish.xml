@@ -1,0 +1,8 @@
+<publishData>
+  <publishTarget publishUrl="D:\abbas\kendo\mvc\mvc2\without_kendo_dll\service\">
+    <file relUrl="PDFTOHTMLService.asmx" publishTime="02/08/2014 13:54:35" />
+    <file relUrl="bin/WebService.dll" publishTime="02/28/2014 12:10:11" />
+    <file relUrl="bin/WebService.pdb" publishTime="02/28/2014 12:10:11" />
+    <file relUrl="Web.config" publishTime="02/28/2014 10:17:14" />
+  </publishTarget>
+</publishData>

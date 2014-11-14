@@ -1,0 +1,15 @@
+more demo:
+http://docs.kendoui.com/api/framework/datasource#schemamodel-objectkendodatamodel
+http://docs.kendoui.com/api/web/grid#change
+http://demos.kendoui.com/web/grid/events.html
+http://docs.kendoui.com/api/web/grid#edit
+
+grid click
+http://stackoverflow.com/questions/13651828/kendo-ui-jquery-click-event-running-multiple-times
+
+http://jsbin.com/egoroh/2/edit
+http://jsfiddle.net/P62Vy/
+
+//custom filteration
+http://jsbin.com/uwiqow/1/edit
+http://stackoverflow.com/questions/15061501/kendoui-grid-custom-filter-ui

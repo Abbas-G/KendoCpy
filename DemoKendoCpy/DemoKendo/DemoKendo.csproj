@@ -1,0 +1,461 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{99A07587-E780-4E33-B065-0A4AB05FA054}</ProjectGuid>
+    <ProjectTypeGuids>{F85E285D-A4E0-4152-9332-AB1D724D3325};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DemoKendo</RootNamespace>
+    <AssemblyName>DemoKendo</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json.Compact, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft ASP.NET\ASP.NET MVC 2\\Assemblies\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AutoCompleteServerSideController.cs" />
+    <Compile Include="Controllers\BatchEdittingController.cs" />
+    <Compile Include="Controllers\CheckAjaxRequestController.cs" />
+    <Compile Include="Controllers\ComboBoxController.cs" />
+    <Compile Include="Controllers\ConstraintController.cs" />
+    <Compile Include="Controllers\DataSourceController.cs" />
+    <Compile Include="Controllers\DemoController.cs" />
+    <Compile Include="Controllers\DragDropController.cs" />
+    <Compile Include="Controllers\FileSystemController.cs" />
+    <Compile Include="Controllers\FilterController.cs" />
+    <Compile Include="Controllers\GridController.cs" />
+    <Compile Include="Controllers\GridServerPagingController.cs" />
+    <Compile Include="Controllers\GridToGridController.cs" />
+    <Compile Include="Controllers\GridWidMultiInputController.cs" />
+    <Compile Include="Controllers\JavascriptToActionController.cs" />
+    <Compile Include="Controllers\JsonpController.cs" />
+    <Compile Include="Controllers\LinQPracController.cs" />
+    <Compile Include="Controllers\ListViewController.cs" />
+    <Compile Include="Controllers\MultiSelectionController.cs" />
+    <Compile Include="Controllers\MVCandKendoController.cs" />
+    <Compile Include="Controllers\MVCDemoController.cs" />
+    <Compile Include="Controllers\MVCListController.cs" />
+    <Compile Include="Controllers\SchedulerController.cs" />
+    <Compile Include="Controllers\SchedulerTemplatesController.cs" />
+    <Compile Include="Controllers\SharingController.cs" />
+    <Compile Include="Controllers\TabsController.cs" />
+    <Compile Include="Controllers\TemplatesController.cs" />
+    <Compile Include="Controllers\TestHtmlController.cs" />
+    <Compile Include="Controllers\TransportController.cs" />
+    <Compile Include="Controllers\TreeViewController.cs" />
+    <Compile Include="Controllers\UploaderController.cs" />
+    <Compile Include="Controllers\WindowController.cs" />
+    <Compile Include="DataClasses1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="KendoGridUtilities\KendoGridFilter.cs" />
+    <Compile Include="KendoGridUtilities\KendoGridSorter.cs" />
+    <Compile Include="KendoGridUtilities\LinqFilteringUtility.cs" />
+    <Compile Include="KendoGridUtilities\LinqSortingUtility.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TESTDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TESTDBModel.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Views\Demo\Index.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.min-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.min-vsdoc.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Adv.txt" />
+    <Content Include="Content\icons\add.png" />
+    <Content Include="Content\icons\cancel.png" />
+    <Content Include="Content\icons\coloricons-sprite.png" />
+    <Content Include="Content\icons\edit.png" />
+    <Content Include="Content\icons\ok.png" />
+    <Content Include="Content\jQueryUI\images\animated-overlay.gif" />
+    <Content Include="Content\jQueryUI\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\jQueryUI\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\jQueryUI\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\jQueryUI\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\jQueryUI\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\jQueryUI\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\jQueryUI\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\jQueryUI\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\jQueryUI\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\jQueryUI\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\jQueryUI\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\jQueryUI\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\jQueryUI\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\jQueryUI\jquery-ui.min.css" />
+    <Content Include="Content\kendo2\Default\editor.png" />
+    <Content Include="Content\kendo2\Default\imagebrowser.png" />
+    <Content Include="Content\kendo2\Default\loading-image.gif" />
+    <Content Include="Content\kendo2\Default\loading.gif" />
+    <Content Include="Content\kendo2\Default\loading_2x.gif" />
+    <Content Include="Content\kendo2\Default\slider-h.gif" />
+    <Content Include="Content\kendo2\Default\slider-v.gif" />
+    <Content Include="Content\kendo2\Default\sprite.png" />
+    <Content Include="Content\kendo2\Default\sprite_2x.png" />
+    <Content Include="Content\kendo2\jquery.min.js" />
+    <Content Include="Content\kendo2\kendo.common.min.css" />
+    <Content Include="Content\kendo2\kendo.default.min.css" />
+    <Content Include="Content\KendoNew\cultures\kendo.culture.en-US.min.js" />
+    <Content Include="Content\KendoNew\js\jquery.min.js" />
+    <Content Include="Content\KendoNew\js\kendo.web.min.js" />
+    <Content Include="Content\KendoNew\Styles\Default\editor.png" />
+    <Content Include="Content\KendoNew\Styles\Default\imagebrowser.png" />
+    <Content Include="Content\KendoNew\Styles\Default\indeterminate.gif" />
+    <Content Include="Content\KendoNew\Styles\Default\loading-image.gif" />
+    <Content Include="Content\KendoNew\Styles\Default\loading.gif" />
+    <Content Include="Content\KendoNew\Styles\Default\loading_2x.gif" />
+    <Content Include="Content\KendoNew\Styles\Default\slider-h.gif" />
+    <Content Include="Content\KendoNew\Styles\Default\slider-v.gif" />
+    <Content Include="Content\KendoNew\Styles\Default\sprite.png" />
+    <Content Include="Content\KendoNew\Styles\Default\sprite_2x.png" />
+    <Content Include="Content\KendoNew\Styles\kendo.common.min.css" />
+    <Content Include="Content\KendoNew\Styles\kendo.default.min.css" />
+    <Content Include="Content\KendoNew\Styles\kendo.rtl.min.css" />
+    <Content Include="Content\kendo\js\console.js" />
+    <Content Include="Content\kendo\js\jquery-1.8.3.min.js" />
+    <Content Include="Content\kendo\js\kendo.all.min.js" />
+    <Content Include="Content\kendo\js\kendo.all.min2.js" />
+    <Content Include="Content\kendo\peoples\ALFKI.jpg" />
+    <Content Include="Content\kendo\peoples\ANATR.jpg" />
+    <Content Include="Content\kendo\peoples\ANTON.jpg" />
+    <Content Include="Content\kendo\peoples\AROUT.jpg" />
+    <Content Include="Content\kendo\style\CustomThemes\Black\editor.png" />
+    <Content Include="Content\kendo\style\CustomThemes\Black\imagebrowser.png" />
+    <Content Include="Content\kendo\style\CustomThemes\Black\loading-image.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Black\loading.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Black\slider-h.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Black\slider-v.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Black\sprite%402x.png" />
+    <Content Include="Content\kendo\style\CustomThemes\Black\sprite.png" />
+    <Content Include="Content\kendo\style\CustomThemes\BlueOpal\editor.png" />
+    <Content Include="Content\kendo\style\CustomThemes\BlueOpal\imagebrowser.png" />
+    <Content Include="Content\kendo\style\CustomThemes\BlueOpal\loading-image.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\BlueOpal\loading.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\BlueOpal\slider-h.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\BlueOpal\slider-v.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\BlueOpal\sprite%402x.png" />
+    <Content Include="Content\kendo\style\CustomThemes\BlueOpal\sprite.png" />
+    <Content Include="Content\kendo\style\CustomThemes\Bootstrap\editor.png" />
+    <Content Include="Content\kendo\style\CustomThemes\Bootstrap\imagebrowser.png" />
+    <Content Include="Content\kendo\style\CustomThemes\Bootstrap\loading-image.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Bootstrap\loading.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Bootstrap\slider-h.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Bootstrap\slider-v.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Bootstrap\sprite%402x.png" />
+    <Content Include="Content\kendo\style\CustomThemes\Bootstrap\sprite.png" />
+    <Content Include="Content\kendo\style\CustomThemes\custom_gray_blue.css" />
+    <Content Include="Content\kendo\style\CustomThemes\custom_gray_yellow.css" />
+    <Content Include="Content\kendo\style\CustomThemes\custom_blue_opal.css" />
+    <Content Include="Content\kendo\style\CustomThemes\custom_moon_light.css" />
+    <Content Include="Content\kendo\style\CustomThemes\custom_pink_black.css" />
+    <Content Include="Content\kendo\style\CustomThemes\custom_metro_black.css" />
+    <Content Include="Content\kendo\style\CustomThemes\custom_black.css" />
+    <Content Include="Content\kendo\style\CustomThemes\Default\editor.png" />
+    <Content Include="Content\kendo\style\CustomThemes\Default\imagebrowser.png" />
+    <Content Include="Content\kendo\style\CustomThemes\Default\loading-image.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Default\loading.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Default\slider-h.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Default\slider-v.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Default\sprite%402x.png" />
+    <Content Include="Content\kendo\style\CustomThemes\Default\sprite.png" />
+    <Content Include="Content\kendo\style\CustomThemes\HighContrast\editor.png" />
+    <Content Include="Content\kendo\style\CustomThemes\HighContrast\imagebrowser.png" />
+    <Content Include="Content\kendo\style\CustomThemes\HighContrast\loading-image.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\HighContrast\loading.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\HighContrast\slider-h.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\HighContrast\slider-v.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\HighContrast\sprite%402x.png" />
+    <Content Include="Content\kendo\style\CustomThemes\HighContrast\sprite.png" />
+    <Content Include="Content\kendo\style\CustomThemes\MetroBlack\editor.png" />
+    <Content Include="Content\kendo\style\CustomThemes\MetroBlack\imagebrowser.png" />
+    <Content Include="Content\kendo\style\CustomThemes\MetroBlack\loading-image.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\MetroBlack\loading.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\MetroBlack\slider-h.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\MetroBlack\slider-v.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\MetroBlack\sprite%402x.png" />
+    <Content Include="Content\kendo\style\CustomThemes\MetroBlack\sprite.png" />
+    <Content Include="Content\kendo\style\CustomThemes\Moonlight\editor.png" />
+    <Content Include="Content\kendo\style\CustomThemes\Moonlight\imagebrowser.png" />
+    <Content Include="Content\kendo\style\CustomThemes\Moonlight\loading-image.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Moonlight\loading.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Moonlight\slider-h.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Moonlight\slider-v.gif" />
+    <Content Include="Content\kendo\style\CustomThemes\Moonlight\sprite%402x.png" />
+    <Content Include="Content\kendo\style\CustomThemes\Moonlight\sprite.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\brushed-metal.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\dots1.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\dots10.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\dots11.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\dots12.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\dots13.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\dots2.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\dots3.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\dots4.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\dots5.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\dots6.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\dots7.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\dots8.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\dots9.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\glass-lighter.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\glass.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\highlight.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\hsv-gradient.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\hue.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\leather1.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\leather2.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\noise.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\stripe1.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\stripe2.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\stripe3.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\stripe4.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\stripe5.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\stripe6.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\transparency.png" />
+    <Content Include="Content\kendo\style\CustomThemes\textures\transtexture.png" />
+    <Content Include="Content\kendo\style\Default\editor.png" />
+    <Content Include="Content\kendo\style\Default\imagebrowser.png" />
+    <Content Include="Content\kendo\style\Default\loading-image.gif" />
+    <Content Include="Content\kendo\style\Default\loading.gif" />
+    <Content Include="Content\kendo\style\Default\slider-h.gif" />
+    <Content Include="Content\kendo\style\Default\slider-v.gif" />
+    <Content Include="Content\kendo\style\Default\sprite%402x.png" />
+    <Content Include="Content\kendo\style\Default\sprite.png" />
+    <Content Include="Content\kendo\js\jquery.min.js" />
+    <Content Include="Content\kendo\js\kendo.web.min.js" />
+    <Content Include="Content\kendo\pageturn\arrow-left.png" />
+    <Content Include="Content\kendo\pageturn\arrow-right.png" />
+    <Content Include="Content\kendo\pageturn\audi.jpg" />
+    <Content Include="Content\kendo\pageturn\book.png" />
+    <Content Include="Content\kendo\pageturn\ferrari.jpg" />
+    <Content Include="Content\kendo\pageturn\maserati.jpg" />
+    <Content Include="Content\kendo\pageturn\mazda.jpg" />
+    <Content Include="Content\kendo\pageturn\mercedes.jpg" />
+    <Content Include="Content\kendo\pageturn\mini.jpg" />
+    <Content Include="Content\kendo\style\examples-offline.css" />
+    <Content Include="Content\kendo\style\kendo.common.min.css" />
+    <Content Include="Content\kendo\style\kendo.default.min.css" />
+    <Content Include="Scripts\jquery-2.0.3.min.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\kendo.all.min.js" />
+    <Content Include="Scripts\kendo.web.min.js" />
+    <Content Include="Views\Account\AccountPartial.ascx" />
+    <Content Include="Views\Account\Index.aspx" />
+    <Content Include="Views\AutoCompleteServerSide\Index.aspx" />
+    <Content Include="Views\BatchEditting\Batch.aspx" />
+    <Content Include="Views\CheckAjaxRequest\Index.aspx" />
+    <Content Include="Views\ComboBox\CascadingComboBox.aspx" />
+    <Content Include="Views\ComboBox\CascadingComboBox2.aspx" />
+    <Content Include="Views\ComboBox\CascadingComboBoxRemoveDupli.aspx" />
+    <Content Include="Views\Constraint\Content.aspx" />
+    <Content Include="Views\Constraint\Index.aspx" />
+    <Content Include="Views\Constraint\ProductView.aspx" />
+    <Content Include="Views\DataSource\Details.ascx" />
+    <Content Include="Views\DataSource\Index.aspx" />
+    <Content Include="Views\DataSource\SaveGridData.aspx" />
+    <Content Include="Views\DataSource\simpleGrid.aspx" />
+    <Content Include="Views\DataSource\UseOfDate.aspx" />
+    <Content Include="Views\Demo\DateTimePicker.aspx" />
+    <Content Include="Views\Demo\Editor.aspx" />
+    <Content Include="Views\Demo\GoogleSearch.aspx" />
+    <Content Include="Views\DragDrop\Index.aspx" />
+    <Content Include="Views\FileSystem\Index.aspx" />
+    <Content Include="Views\Filter\ServerFilter.aspx" />
+    <Content Include="Views\Filter\SimpleFilter.aspx" />
+    <Content Include="Views\GridServerPaging\Index.aspx" />
+    <Content Include="Views\GridToGrid\Transfer.aspx" />
+    <Content Include="Views\GridWidMultiInput\Index.aspx" />
+    <Content Include="Views\Grid\AddNewRow.ascx" />
+    <Content Include="Views\Grid\ColorPickerInGrid.aspx" />
+    <Content Include="Views\Grid\detailInit.aspx" />
+    <Content Include="Views\Grid\ImageInGrid.aspx" />
+    <Content Include="Views\Grid\IncellGrid.aspx" />
+    <Content Include="Views\Grid\InlineEditing.aspx" />
+    <Content Include="Views\Grid\InlineEditing2.aspx" />
+    <Content Include="Views\Grid\InsideGridClick.aspx" />
+    <Content Include="Views\Grid\popup.aspx" />
+    <Content Include="Views\Grid\TestGrid.aspx" />
+    <Content Include="Views\JavascriptToAction\Index.aspx" />
+    <Content Include="Views\JavascriptToAction\PageList.aspx" />
+    <Content Include="Views\LinQPrac\Index.aspx" />
+    <Content Include="Views\ListView\Details.ascx" />
+    <Content Include="Views\ListView\ProjectsList.aspx" />
+    <Content Include="Views\MultiSelection\CustomMultiSelection.aspx" />
+    <Content Include="Views\MultiSelection\MultiSelection.aspx" />
+    <Content Include="Views\Demo\Sorting.aspx" />
+    <Content Include="Views\MultiSelection\SimpleMultiSelection.aspx" />
+    <Content Include="Views\MVCandKendo\Index.aspx" />
+    <Content Include="Views\MVCandKendo\Index2.aspx" />
+    <Content Include="Views\MVCDemo\Index.aspx" />
+    <Content Include="Views\MVCList\Index.aspx" />
+    <Content Include="Views\SchedulerTemplates\Index.aspx" />
+    <Content Include="Views\Scheduler\Index.aspx" />
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Sharing\FB.aspx" />
+    <Content Include="Views\Sharing\GooglePlus.aspx" />
+    <Content Include="Views\Sharing\LinkIn.aspx" />
+    <Content Include="Views\Sharing\Twitter.aspx" />
+    <Content Include="Views\Tabs\AjaxCallCheck.aspx" />
+    <Content Include="Views\Tabs\Contents.aspx" />
+    <Content Include="Views\Tabs\WebServiceAcess.aspx" />
+    <Content Include="Views\Templates\Box.aspx" />
+    <Content Include="Views\Templates\Index.aspx" />
+    <Content Include="Views\TestHtml\PreventDefault.aspx" />
+    <Content Include="Views\Transport\Index.aspx" />
+    <Content Include="Views\TreeView\Basic.aspx" />
+    <Content Include="Views\TreeView\Events.aspx" />
+    <Content Include="Views\TreeView\LocalData.aspx" />
+    <Content Include="Views\Uploader\Index.aspx" />
+    <Content Include="Views\Uploader\MultiFile.aspx" />
+    <Content Include="Views\Uploader\SingleFile.aspx" />
+    <Content Include="Views\Uploader\UploaderInGrid.aspx" />
+    <Content Include="Views\Uploader\UploaderInGrid2.aspx" />
+    <Content Include="Views\Uploader\UploaderInGridPopup.aspx" />
+    <Content Include="Views\Window\NewWindow.aspx" />
+    <Content Include="Views\Window\Validator.aspx" />
+    <Content Include="Views\Window\ValidatorAndKendo.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="DataClasses1.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
+    <EntityDeploy Include="TESTDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TESTDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DemoKendo.Core\DemoKendo.Core.csproj">
+      <Project>{0BB97551-94C1-4D14-9933-BB460583968D}</Project>
+      <Name>DemoKendo.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Service\" />
+    <Folder Include="UploadFiles\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5514</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,23 @@
+----------------------------------------------------------------------------------------------------------- 
+Error: 17806, Severity: 20, State: 14.
+ SSPI handshake failed with error code 0x8009030c, state 14 while establishing a connection with integrated security; the connection has been closed. Reason: AcceptSecurityContext failed. The Windows error code indicates the cause of failure.  [CLIENT: 221.0.95.244].
+
+Articule: http://www.bhcblog.com/2009/10/08/fix-for-login-failed-for-user-the-user-is-not-associated-with-a-trusted-sql-server-connection/
+Articule: http://stackoverflow.com/questions/1538027/sspi-handshake-failed-with-error-code-0x8009030c-while-establishing-a-connection# 
+-----------------------------------------------------------------------------------------------------------
+Error: 18452, Severity: 14, State: 1.
+ Login failed. The login is from an untrusted domain and cannot be used with Windows authentication. [CLIENT: 221.0.95.244]
+
+http://blog.sqlauthority.com/2007/04/14/sql-server-fix-error-18452-login-failed-for-user-null-the-user-is-not-associated-with-a-trusted-sql-server-connection/
+http://stackoverflow.com/questions/11058803/sql-server-2008-error-18452-the-login-is-from-an-untrusted-domain-and-cannot-be
+
+----------------------------------------------------------------------------------------------------------
+continues sa
+Login failed for user 'sa'. Reason: An error occurred while evaluating the password. 
+Error: 18456, Severity: 14, State: 7.
+ip address  218.92.163.10  199.83.94.83  23.91.24.39
+
+Articule: http://blog.sqlauthority.com/2009/04/23/sql-server-fix-error-18486-login-failed-for-user-sa-because-the-account-is-currently-locked-out-the-system-administrator-can-unlock-it-unlock-sa-login/
+Articule: http://social.msdn.microsoft.com/Forums/sqlserver/en-US/c846d6b6-0cb1-46b7-b3fb-13a69f9695c1/multiple-login-failed-for-user-sa-messages-in-profiler-is-it-hacker?forum=sqlsecurity
+Articule: http://dba.stackexchange.com/questions/7660/possible-attack-on-my-sql-server
+----------------------------------------------------------------------------------------------------------

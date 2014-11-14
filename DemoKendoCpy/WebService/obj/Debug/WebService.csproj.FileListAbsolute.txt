@@ -1,0 +1,10 @@
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\WebService\bin\WebService.dll
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\WebService\bin\WebService.pdb
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\WebService\obj\Debug\ResolveAssemblyReference.cache
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\WebService\obj\Debug\WebService.dll
+D:\abbas\kendo\mvc\mvc2\without_kendo_dll\DemoKendo\WebService\obj\Debug\WebService.pdb
+D:\Workspace\RND\extras 2,3,4\mvc2\without_kendo_dll\DemoKendoCpy\WebService\bin\WebService.dll
+D:\Workspace\RND\extras 2,3,4\mvc2\without_kendo_dll\DemoKendoCpy\WebService\bin\WebService.pdb
+D:\Workspace\RND\extras 2,3,4\mvc2\without_kendo_dll\DemoKendoCpy\WebService\obj\Debug\ResolveAssemblyReference.cache
+D:\Workspace\RND\extras 2,3,4\mvc2\without_kendo_dll\DemoKendoCpy\WebService\obj\Debug\WebService.dll
+D:\Workspace\RND\extras 2,3,4\mvc2\without_kendo_dll\DemoKendoCpy\WebService\obj\Debug\WebService.pdb
