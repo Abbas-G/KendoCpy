@@ -4,11 +4,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>PageList</title>
+    <title>Index</title>
 </head>
 <body>
-    <div>aa
-    <%=ViewData["list"]%>
+    <div id="div1">
+    <% using (Html.BeginForm()) {%>
+<input type="submit" value="submit" />
+<%} %>
+    </div>
+    
+    <div id="div2">
+    <%Html.RenderAction("PartialView1", "twoform"); %>
     </div>
 </body>
 </html>

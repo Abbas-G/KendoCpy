@@ -1,0 +1,3 @@
+http://stackoverflow.com/questions/26985294/avoid-send-json-property
+
+http://james.newtonking.com/json/help/index.html?topic=html/ConditionalProperties.htm

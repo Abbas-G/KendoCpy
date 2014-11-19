@@ -26,7 +26,7 @@
         $(document).ready(function() {
 
             var xhReq = new XMLHttpRequest();
-            xhReq.open("POST", "http://localhost:2088/DataSource/GetJsonOutputForWorker", false);
+            xhReq.open("POST", '<%=Url.Content("~/DataSource/GetJsonOutputForWorker")%>', false);
             //xhReq.open("GET", "http://localhost:2088/MultiSelection/GetJsonOutputForCustomMultiSelect", false);
             xhReq.send(null);
             var jsonObject = JSON.parse(xhReq.responseText);
@@ -77,7 +77,7 @@
                 dataSource: {
                     transport: {
                         read: {
-                            url: "http://localhost:2088/DataSource/GetJsonOutputForWorker",
+                            url: '<%=Url.Content("~/DataSource/GetJsonOutputForWorker")%>',
                             dataType: "json",
                             type: "POST"
                         }
@@ -106,7 +106,7 @@
                         type: "json",
                         serverPaging: true,
                         pageSize: 20,
-                        transport: { read: { url: "http://localhost:2088/DataSource/GetJsonOutputForMovies", dataType: "json", type: "POST"} }
+                        transport: { read: { url: '<%=Url.Content("~/DataSource/GetJsonOutputForMovies")%>', dataType: "json", type: "POST"} }
                 ,
                         schema: {
                             model: {
