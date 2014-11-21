@@ -19,5 +19,10 @@ namespace DemoKendo.Controllers
         {
             return View();
         }
+
+        public ActionResult SimpleTemplate()
+        {
+            return View();
+        }
     }
 }

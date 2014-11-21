@@ -161,6 +161,21 @@
              
              });*/
              hidetoolbar();
+
+             /* 
+             //change grid page number
+             //it makes two server side call
+             $('#grid').data('kendoGrid').dataSource.fetch(function() {
+             $('#grid').data('kendoGrid').dataSource.page(2);
+             });
+
+             //0r
+             //it wont makes two server side call
+             $('#grid').data('kendoGrid').one("dataBound", function() {
+             this.dataSource.page(2);
+             });*/
+
+              
          });
 
 
