@@ -15,6 +15,8 @@
 </head>
 <body>
     <div id="grid"></div>
+    
+     <%--<input type="button" value="check ajax" onclick="checkAjaxBybutton()" />--%>
     <script type="text/x-kendo-template" id="template">
                 <div class="toolbar">
                     <label for="products">Search Products by Category:</label><input id="products" class="k-textbox"/>
@@ -313,7 +315,24 @@
 
                 e.preventDefault();
             }
-            
+
+
+//            function checkAjaxBybutton() {
+//                $.ajax({
+//                    type: "POST",
+//                    url: '/MyWebService.asmx/checkBool',
+//                    contenttype: "application/json; charset=utf-8",
+//                    data: { text: 'aass' },
+//                    datatype: 'json',
+//                    success: function(data) {
+//                        var BoolData = (data == "True") ? true : false;
+//                        alert(BoolData);
+//                        if (BoolData) {
+//                            alert('inside');
+//                        }
+//                    }
+//                });
+//            }
             </script>
             
   <!-- this style is add to solve "validation msg hidding in the bottom of grid" by changing validation style-->          
