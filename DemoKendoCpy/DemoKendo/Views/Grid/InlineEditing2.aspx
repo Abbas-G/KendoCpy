@@ -140,6 +140,12 @@
                  }
              });
 
+             function OnEdit(e) {
+                 if (globFlag) {
+                     this.closeCell();
+                 }
+             }
+
              $(".k-grid-my-create", grid.element).on("click", function(e) {
                  var grid = $("#grid").data("kendoGrid");
 

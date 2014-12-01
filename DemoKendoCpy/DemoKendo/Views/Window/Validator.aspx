@@ -6,13 +6,13 @@
 <head runat="server">
     <title>Validator</title>
 
-    <link href="<%= Url.Content("~/Content/kendo/style/examples-offline.css")%>" rel="stylesheet" type="text/css" />
+   <%-- <link href="<%= Url.Content("~/Content/kendo/style/examples-offline.css")%>" rel="stylesheet" type="text/css" />--%>
     <link href="<%= Url.Content("~/Content/kendo/style/kendo.common.min.css")%>" rel="stylesheet" />
     <link href="<%= Url.Content("~/Content/kendo/style/kendo.default.min.css")%>" rel="stylesheet" />
 
     <script src="<%= Url.Content("~/Content/kendo/js/jquery.min.js")%>"></script>
     <script src="<%= Url.Content("~/Content/kendo/js/kendo.web.min.js")%>"></script>
-    <script src="<%= Url.Content("~/Content/kendo/js/console.js")%>"></script>
+    <%--<script src="<%= Url.Content("~/Content/kendo/js/console.js")%>"></script>--%>
 </head>
 <body>
     <a class="offline-button" href="../index.html">Back</a>

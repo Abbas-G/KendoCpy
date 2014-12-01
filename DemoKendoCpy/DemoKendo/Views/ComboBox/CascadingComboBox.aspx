@@ -67,7 +67,7 @@
 
                     /**call jason method "public JsonResult GetJsonOutputForCustomMultiSelect()"**/
                     var xhReq = new XMLHttpRequest();
-                    xhReq.open("POST", "http://localhost:2088/MultiSelection/GetJsonOutputForCustomMultiSelect", false);
+                    xhReq.open("POST", "http://localhost:5514/MultiSelection/GetJsonOutputForCustomMultiSelect", false);
                     xhReq.send(null);
                     var jsonObject = JSON.parse(xhReq.responseText);
 
@@ -93,7 +93,7 @@
 
                     /**call jason method "public JsonResult GetJsonOutputForProductByCustomerID(string CustomerID)"**/
                     var xhReq = new XMLHttpRequest();
-                    xhReq.open("POST", "http://localhost:2088/ComboBox/GetJsonOutputForProductByCustomerID?CustomerID=" + categories.value(), false);
+                    xhReq.open("POST", "http://localhost:5514/ComboBox/GetJsonOutputForProductByCustomerID?CustomerID=" + categories.value(), false);
                     xhReq.send(null);
                     var jsonObject = JSON.parse(xhReq.responseText);
 
@@ -111,7 +111,7 @@
 
                     /**call jason method " public JsonResult GetJsonOutputForOrderByProductID(string ProductID)"**/
                     var xhReq = new XMLHttpRequest();
-                    xhReq.open("POST", "http://localhost:2088/ComboBox/GetJsonOutputForOrderByProductID?ProductID=" + products.value(), false);
+                    xhReq.open("POST", "http://localhost:5514/ComboBox/GetJsonOutputForOrderByProductID?ProductID=" + products.value(), false);
                     xhReq.send(null);
                     var jsonObject = JSON.parse(xhReq.responseText);
 

@@ -26,6 +26,8 @@
                     <label for="orders">Orders:</label><input id="orders"  style="width: 300px"/>
                 </p>
                 
+                <input type="button" value="getvalue" onclick="getCatvalue()" />
+                
     <script>
         var categories;
         var products;
@@ -55,7 +57,11 @@
                 dataSource: new kendo.data.DataSource({
                     serverFiltering: true,
                     transport: {
-                    read: {url:'<%=Url.Content("~/ComboBox/GetJsonOutputForProductByCustomerID?CustomerID=' + categories.value()+'")%>',
+                    read: { url: '<%=Url.Content("~/ComboBox/GetJsonOutputForProductByCustomerID")%>',
+                    data: function (options) {
+                        //alert(categories.value());
+                        return { CustomerID: categories.value()};
+                    },
                     dataType: "json",
                     type: "POST"}
                     }
@@ -71,13 +77,21 @@
                 dataSource: new kendo.data.DataSource({
                     serverFiltering: true,
                     transport: {
-                    read:{ url:'<%=Url.Content("~/ComboBox/GetJsonOutputForOrderByProductID?ProductID=' + products.value()+'")%>',
+                    read: { url: '<%=Url.Content("~/ComboBox/GetJsonOutputForOrderByProductID")%>',
+                    data: function(options) {
+                        //alert(products.value());
+                        return { ProductID: products.value() };
+                    },
                     dataType: "json",
                     type: "POST"}
                     }
                 })
             }).data("kendoDropDownList");
         });
+        function getCatvalue() {
+            //alert(document.getElementById("categories"));
+            alert(categories.value() + " :" + products.value() + " : " + orders.value());
+        }
 
     </script>
     </div>

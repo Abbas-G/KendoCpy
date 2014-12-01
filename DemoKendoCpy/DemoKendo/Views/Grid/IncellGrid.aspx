@@ -22,6 +22,8 @@
         xhReq.send(null);
         var GlobalSearchFOOD = JSON.parse(xhReq.responseText);
         var record = 0;
+
+        var globFlag = true;
         $(document).ready(function() {
             var crudServiceBaseUrl = '<%=Url.Content("~/Grid")%>';
             $("#grid").kendoGrid({
@@ -31,78 +33,84 @@
                             { field: "UnitPrice", title: "Unit Price", format: "{0:c}" },
                             { field: "UnitsInStock", title: "Units In Stock" },
                             { field: "Discontinued", width: "100px" },
-                            { field: "Category", title: "Category", filterable: { ui: GroupFilter }, editor: ColumnGroupFilter},
+                            { field: "Category", title: "Category", filterable: { ui: GroupFilter }, editor: ColumnGroupFilter },
                 { command: ["destroy"], title: "&nbsp;", width: "172px" }
                             ],
-                editable:"incell"
+                editable: "incell"
             ,
-                    dataSource: {
-                        //change() gets called on ds.sync(),
-                        //so since sync() won't fire our update() method
-                        //we do it ourselves
-                        change: function(e) {
-                            var ds = $("#grid").data('kendoGrid').dataSource;
-                            
-                            if (e.action == "itemchange") {
-                                var dataItem = ds.getByUid(e.items[0].uid);
-                                ds.transport.update(dataItem);
-                                alert(dataItem);
-                            }
-                            if (e.action == "remove") {
-                                var dataItem = ds.getByUid(e.items[0].uid);
-                                ds.transport.destroy(dataItem);
-                                alert(dataItem);
-                            }
-                        },
-                        transport: {
-                            //                    read: function() {
-                            //                        $("#grid").data("kendoGrid").dataSource.data(testData);
-                            //                    }
-                            read: {
-                                url: crudServiceBaseUrl + "/GetJsonOutputForGridDataSelect",
-                                dataType: "json",
-                                type: "POST"
-                            },
-                            update: function(dataItem) {
-                                alert('gets fired update!');
-                                //console.log(dataItem);
-                                //TODO: Save logic
-                            },
-                            destroy: function(dataItem) {
-                                alert('gets fired now!');
-                                //console.log(dataItem);
-                                //TODO: Save logic
-                            },
-                            parameterMap: function(options, operation) {
-                                if (operation !== "read" && options.models) {
-                                    return { models: kendo.stringify(options.models) };
-                                }
-                            }
-                        }
-                    }
-,
-                    schema: {
-                        model: {
-                            id: "ProductID",
-                            fields: {
-                                ProductID: { editable: false, nullable: true },
-                                ProductName: { validation: { required: true, validationMessage: "Please enter time"} },
-                                UnitPrice: { type: "number", validation: { required: true, min: 1} },
-                                Discontinued: { type: "boolean" },
-                                UnitsInStock: { type: "number", validation: { min: 0, required: true} },
-                                Category: { type: "string", validation: { required: true} }
-                            }
-                        }
-                    }
-                });
+                dataSource: {
+                    //change() gets called on ds.sync(),
+                    //so since sync() won't fire our update() method
+                    //we do it ourselves
+                    change: function(e) {
+                        var ds = $("#grid").data('kendoGrid').dataSource;
 
-                $(".k-grid-my-create", grid.element).on("click", function(e) {
-                    var grid = $("#grid").data("kendoGrid");
-                    grid.dataSource.filter({});
-                    grid.dataSource.sort({});
-                    grid.addRow();
-                });
+                        if (e.action == "itemchange") {
+                            var dataItem = ds.getByUid(e.items[0].uid);
+                            ds.transport.update(dataItem);
+                            alert(dataItem);
+                        }
+                        if (e.action == "remove") {
+                            var dataItem = ds.getByUid(e.items[0].uid);
+                            ds.transport.destroy(dataItem);
+                            alert(dataItem);
+                        }
+                    },
+                    transport: {
+                        //                    read: function() {
+                        //                        $("#grid").data("kendoGrid").dataSource.data(testData);
+                        //                    }
+                        read: {
+                            url: crudServiceBaseUrl + "/GetJsonOutputForGridDataSelect",
+                            dataType: "json",
+                            type: "POST"
+                        },
+                        update: function(dataItem) {
+                            alert('gets fired update!');
+                            //console.log(dataItem);
+                            //TODO: Save logic
+                        },
+                        destroy: function(dataItem) {
+                            alert('gets fired now!');
+                            //console.log(dataItem);
+                            //TODO: Save logic
+                        },
+                        parameterMap: function(options, operation) {
+                            if (operation !== "read" && options.models) {
+                                return { models: kendo.stringify(options.models) };
+                            }
+                        }
+                    }
+                }
+,
+                schema: {
+                    model: {
+                        id: "ProductID",
+                        fields: {
+                            ProductID: { editable: false, nullable: true },
+                            ProductName: { validation: { required: true, validationMessage: "Please enter time"} },
+                            UnitPrice: { type: "number", validation: { required: true, min: 1} },
+                            Discontinued: { type: "boolean" },
+                            UnitsInStock: { type: "number", validation: { min: 0, required: true} },
+                            Category: { type: "string", validation: { required: true} }
+                        }
+                    }
+                },
+                edit: function(e) {
+                      //if ( globFlag ) {
+                       //   this.closeCell();
+                      //}
+                  }
             });
+
+
+            $(".k-grid-my-create", grid.element).on("click", function(e) {
+                var grid = $("#grid").data("kendoGrid");
+                grid.dataSource.filter({});
+                grid.dataSource.sort({});
+                grid.addRow();
+            });
+        });
 
             function ColumnGroupFilter(container, options) {
                 $('<input required="required" name="' + options.field + '"/>').appendTo(container).kendoComboBox({

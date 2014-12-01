@@ -157,7 +157,7 @@
                                 info: "Filter by: ",
                             }*/
                         },
-                        //height: 430,
+                        height: 430,
                         toolbar: [{ text: "", template: kendo.template($("#template").html()) }
                                   , { text: "", template: kendo.template($("#grid_toolbar").html()) }
                                   , { text: "create", template: "<a href='javascript: void(0)' class='abutton create' onclick='createRow()' title='Add New Row'>create</a>" }
