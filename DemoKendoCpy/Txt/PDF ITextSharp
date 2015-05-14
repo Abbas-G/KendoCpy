@@ -1,0 +1,416 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using iTextSharp.text;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.text.pdf;
+using System.IO;
+
+namespace WaterAuditor.Mobile.Controllers
+{
+    public class PDFHelper
+    {
+        public int BusinessID { get; set; }
+
+        public Document GeneratePDFSummary(Stream outputStream)
+        {
+            Core.Managers.AuditManager coreAudit = new WaterAuditor.Core.Managers.AuditManager();
+            Core.DAL.Business business = coreAudit.GetAuditByID(BusinessID);
+            List<Core.DAL.AuditSummary> auditReport = coreAudit.GenerateAuditSummary(BusinessID);
+
+            Document pdfDoc = new Document(PageSize.LETTER, 0f, 0f, 20f, 100f);
+            try
+            {
+                HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
+                pdfPage page = new pdfPage();
+
+                PdfWriter pdfWriter = PdfWriter.GetInstance(pdfDoc, outputStream);
+                pdfWriter.PageEvent = page;
+                pdfDoc.Open();
+
+                pdfDoc.Add(new Chunk(""));
+                pdfDoc.Add(GetFirstPage(business));
+
+                pdfDoc.NewPage();
+                pdfDoc.Add(GetSecondPage(business, auditReport));
+
+                pdfDoc.NewPage();
+                pdfDoc.Add(GetSummaryPage(business, auditReport));
+
+                pdfDoc.Close();
+            }
+            catch (System.Threading.ThreadAbortException tex)
+            {
+            }
+            catch (Exception ex)
+            {
+            }
+            return (pdfDoc);
+        }
+
+        private PdfPTable GetFirstPage(Core.DAL.Business business)
+        {
+            PdfPTable contentTable = new PdfPTable(1);
+            contentTable.WidthPercentage = 90;
+            BaseColor col = BaseColor.WHITE;// new BaseColor(0, 19, 63);
+
+            PdfPCell cell = new PdfPCell(new Phrase("\n\n\n\n\n\n\n\n"));
+            cell.Border = 0;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase(business.BusinessName, FontFactory.GetFont("Arial", 42, 1, col)));
+            cell.Border = 0;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Water Efficiency Assessment", FontFactory.GetFont("Arial", 50, 1, col)));
+            cell.Border = 0;
+            cell.PaddingTop = 20;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell();
+            cell.AddElement(new Phrase("Water Utility Provider Account Number:", FontFactory.GetFont("Arial Black", 20, 1, col)));
+            cell.AddElement(new Phrase(business.WaterAccountNo, FontFactory.GetFont("Arial", 16, 1, col)));
+            cell.Border = 0;
+            cell.PaddingTop = 80;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell();
+            cell.AddElement(new Phrase("Address:", FontFactory.GetFont("Arial", 20, 1, col)));
+            cell.AddElement(new Phrase(business.Address, FontFactory.GetFont("Arial", 16, 1, col)));
+            cell.Border = 0;
+            cell.PaddingTop = 20;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell();
+            cell.AddElement(new Phrase("Auditor:", FontFactory.GetFont("Arial", 20, 1, col)));
+            cell.AddElement(new Phrase(business.Auditor, FontFactory.GetFont("Arial", 16, 1, col)));
+            cell.Border = 0;
+            cell.PaddingTop = 20;
+            contentTable.AddCell(cell);
+
+            return contentTable;
+        }
+        private PdfPTable GetSecondPage(Core.DAL.Business business, List<Core.DAL.AuditSummary> auditReport)
+        {
+            PdfPTable contentTable = new PdfPTable(1);
+            contentTable.WidthPercentage = 90;
+
+            PdfPCell cell = new PdfPCell(new Phrase("Executive Summary", FontFactory.GetFont("Arial", 28, 1, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 50;
+            contentTable.AddCell(cell);
+
+            decimal WaterSavingPercentage = (auditReport.Sum(m => m.ExistingWaterCost) > 0 ? ((auditReport.Sum(m => m.WaterSavingPerDay) / auditReport.Sum(m => m.ExistingWaterCost)) * 100) : 0);
+            cell = new PdfPCell(new Phrase("This report outlines methods to increase water efficiency at " + business.Address + " by " + WaterSavingPercentage.ToString("0.00") + "%.This will result in an estimated saving of $" + auditReport.Sum(m => m.CostSavingPerYear).ToString("0.00") + "/year.",
+                FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("An overview of Global Water Access today", FontFactory.GetFont("Arial", 28, 1, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 30;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("World population tripled in the 20th century. Continued population growth coupled with industrialisation and urbanisation will result in an increasing demand for water and will have serious consequences on the environment. (World Water Council, 2012).",
+                FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Globally, one in six people lack access to safe drinking water. Two in six people lack adequate sanitation (WHO, 2004). Approximately 80% of the world's population live in areas with threats to water security (Nature, 2010).",
+                FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Report Scope", FontFactory.GetFont("Arial", 28, 1, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 30;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Water efficiency is one component of ensuring water access protection. On a smaller scale, water efficiency can assist a property owner or manager in managing the cost of water.",
+                FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("This water efficiency audit report outlines where water is being used at " + business.Address + " and provides recommendations that will assist in improving water efficiency.",
+                FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Water Efficiency Assessment Process", FontFactory.GetFont("Arial", 28, 1, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 30;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Using the water-auditor calculator (waterauditor.com.au), a site inspection listed all water using fixtures at " + business.Address + ". ",
+                FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Details of the daily usage of these fixtures was provided by " + business.ContactName + ", and flow rates were calculated. Using this data, the estimated water use for the site was estimated.",
+                FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("If leaking infrastructure was suspected, or unaccounted water use was identified at the Property, monitoring of the water meter via manual readings or electronic data-logging was undertaken. This monitoring determined if base-flow was present.",
+                FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Recommendations to improve water efficiency and the estimated water and cost savings are provided below.",
+               FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            return contentTable;
+        }
+        private PdfPTable GetSummaryPage(Core.DAL.Business business, List<Core.DAL.AuditSummary> auditReport)
+        {
+            PdfPTable contentTable = new PdfPTable(1);
+            contentTable.SplitLate = false;
+            contentTable.SplitRows = true;
+            contentTable.WidthPercentage = 90;
+
+            PdfPCell cell = new PdfPCell(new Phrase("Water Efficiency Assessment Outcome", FontFactory.GetFont("Arial", 28, 1, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 50;
+            contentTable.AddCell(cell);
+
+            decimal WaterSavingPercentage = (auditReport.Sum(m => m.ExistingWaterCost) > 0 ? ((auditReport.Sum(m => m.WaterSavingPerDay) / auditReport.Sum(m => m.ExistingWaterCost)) * 100) : 0);
+            cell = new PdfPCell(new Phrase("This section outlines recommendations that may assist in improving water efficiency by " + WaterSavingPercentage.ToString("0.00") + " % or $" + auditReport.Sum(m => m.CostSavingPerYear).ToString("0.00") + " /year.",
+                FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Total cost of water efficient fixtures was estimated at $" + auditReport.Sum(m => m.AuditCost).ToString("0.00") + ".",
+                FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Total annual water savings are estimated at " + auditReport.Sum(m => m.WaterSavingPerYear).ToString("0.00") + " kL/year.",
+                FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Total cost savings are estimated at $" + auditReport.Sum(m => m.CostSavingPerYear).ToString("0.00") + " /year.",
+                            FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("A table outlining these recommendations and associated cost and water efficiency improvements is shown below.",
+                FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(GetSummaryTable(auditReport));
+            cell.Border = 0;
+            cell.PaddingTop = 20;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Implementation of Recommendations", FontFactory.GetFont("Arial", 28, 1, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 50;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("To implement the recommendations in this report, please contact " + business.Auditor + (string.IsNullOrEmpty(business.AuditorEmail) ? "" : ", " + business.AuditorEmail) + (string.IsNullOrEmpty(business.AuditorPhone) ? "" : ", " + business.AuditorPhone) + " who will assist you to coordinate installation.",
+                            FontFactory.GetFont("Arial", 12, 0, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 10;
+            contentTable.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("© waterauditor.com.au\nDeveloped by Rob Brewster, via a joint initiative of Sydney Water, Woollahra, Waverley and Randwick Councils (NSW, Australia) and Steve Solanki, iProgrammer Australia.",
+                FontFactory.GetFont("Arial", 10, 1, BaseColor.BLACK)));
+            cell.Border = 0;
+            cell.PaddingTop = 40;
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            contentTable.AddCell(cell);
+
+            return contentTable;
+        }
+
+        private PdfPTable GetSummaryTable(List<Core.DAL.AuditSummary> auditReport)
+        {
+            PdfPTable summaryTable = new PdfPTable(11);
+            summaryTable.SplitLate = false;
+            summaryTable.SplitRows = false;
+            summaryTable.WidthPercentage = 100;
+
+            summaryTable.AddCell(GetTitleCell("Location", false));
+            summaryTable.AddCell(GetTitleCell("Item Type", false));
+            summaryTable.AddCell(GetTitleCell("Item Desc", false));
+            summaryTable.AddCell(GetTitleCell("No. of Items", false));
+            summaryTable.AddCell(GetTitleCell("Unit Value", false));
+            summaryTable.AddCell(GetTitleCell("Water Use (L/Day)", false));
+            summaryTable.AddCell(GetTitleCell("Total Cost ($)", false));
+            summaryTable.AddCell(GetTitleCell("Water Savings (L/ Day)", false));
+            summaryTable.AddCell(GetTitleCell("Water Savings (kL/ Yr)", false));
+            summaryTable.AddCell(GetTitleCell("Water Savings (%)", false));
+            summaryTable.AddCell(GetTitleCell("Cost Savings ($/ Yr)", false));
+
+            int i = 0;
+            BaseColor evenColor = new BaseColor(230, 230, 230);
+            BaseColor oddColor = new BaseColor(217, 217, 217);
+            BaseColor rowColor = evenColor;
+
+            foreach (Core.DAL.AuditSummary item in auditReport)
+            {
+                rowColor = ((i % 2 == 0) ? evenColor : oddColor); i++;
+                bool doRowSpan = item.ReplacementEquipID > 0;
+
+                summaryTable.AddCell(GetExistingValueCell(item.Location, rowColor, false));
+                summaryTable.AddCell(GetExistingValueCell(item.Item, rowColor, false));
+                summaryTable.AddCell(GetExistingValueCell(item.ExistingEquip, rowColor, false));
+                summaryTable.AddCell(GetExistingValueCell(item.ExistingQty.ToString(), rowColor, true));
+                summaryTable.AddCell(GetExistingValueCell(item.ExistingUnit, rowColor, true));
+                summaryTable.AddCell(GetExistingValueCell(item.ExistingWaterCost.ToString("0.00"), rowColor, true));
+                summaryTable.AddCell(GetSummaryValueCell("$" + item.AuditCost.ToString("0.00"), rowColor, doRowSpan));
+                summaryTable.AddCell(GetSummaryValueCell(item.WaterSavingPerDay.ToString("0.00"), rowColor, doRowSpan));
+                summaryTable.AddCell(GetSummaryValueCell(item.WaterSavingPerYear.ToString("0.00"), rowColor, doRowSpan));
+                summaryTable.AddCell(GetSummaryValueCell(item.WaterSavingPercentage.ToString("0.00") + "%", rowColor, doRowSpan));
+                summaryTable.AddCell(GetSummaryValueCell("$" + item.CostSavingPerYear.ToString("0.00"), rowColor, doRowSpan));
+
+                if (item.ReplacementEquipID > 0)
+                {
+                    summaryTable.AddCell(GetReplacementValueCell("Replacement", true, false));
+                    summaryTable.AddCell(GetReplacementValueCell(item.ReplacementEquip, false, false));
+                    summaryTable.AddCell(GetReplacementValueCell(item.ReplacementQty.ToString(), false, false));
+                    summaryTable.AddCell(GetReplacementValueCell(item.ReplacementUnit, false, false));
+                    summaryTable.AddCell(GetReplacementValueCell(item.ReplacementWaterCost.ToString("0.00"), false, false));
+                }
+            }
+
+            summaryTable.AddCell(GetTotalCell("Total", rowColor, true));
+            summaryTable.AddCell(GetTotalCell("$" + auditReport.Sum(m => m.AuditCost).ToString("0.00"), rowColor, false));
+            summaryTable.AddCell(GetTotalCell(auditReport.Sum(m => m.WaterSavingPerDay).ToString("0.00"), rowColor, false));
+            summaryTable.AddCell(GetTotalCell(auditReport.Sum(m => m.WaterSavingPerYear).ToString("0.00"), rowColor, false));
+            decimal WaterSavingPercentage = (auditReport.Sum(m => m.ExistingWaterCost) > 0 ? ((auditReport.Sum(m => m.WaterSavingPerDay) / auditReport.Sum(m => m.ExistingWaterCost)) * 100) : 0);
+            summaryTable.AddCell(GetTotalCell(WaterSavingPercentage.ToString("0.00") + "%", rowColor, false));
+            summaryTable.AddCell(GetTotalCell("$" + auditReport.Sum(m => m.CostSavingPerYear).ToString("0.00"), rowColor, false));
+
+            return summaryTable;
+        }
+        private PdfPCell GetTitleCell(string cellText, bool isFirstCell)
+        {
+            PdfPCell cell = new PdfPCell(new Phrase(cellText, FontFactory.GetFont("Arial", 9, 0, BaseColor.BLACK)));
+            cell.BackgroundColor = new BaseColor(138, 177, 148);
+            if (isFirstCell) cell.Colspan = 2;
+
+            return cell;
+        }
+        private PdfPCell GetExistingValueCell(string cellText, BaseColor rowColor, bool isNumericCell)
+        {
+            PdfPCell cell = new PdfPCell(new Phrase(cellText, FontFactory.GetFont("Arial", 9, 0, BaseColor.BLACK)));
+            cell.BackgroundColor = rowColor;
+            cell.HorizontalAlignment = (isNumericCell ? Element.ALIGN_RIGHT : Element.ALIGN_LEFT);
+            return cell;
+        }
+        private PdfPCell GetReplacementValueCell(string cellText, bool isFirstCell, bool isNumericCell)
+        {
+            PdfPCell cell = new PdfPCell(new Phrase(cellText, FontFactory.GetFont("Arial", 9, 0, new BaseColor(203, 0, 0))));
+            cell.BackgroundColor = new BaseColor(255, 209, 209);
+            cell.HorizontalAlignment = (isNumericCell ? Element.ALIGN_LEFT : Element.ALIGN_RIGHT);
+            if (isFirstCell) cell.Colspan = 2;
+            return cell;
+        }
+        private PdfPCell GetSummaryValueCell(string cellText, BaseColor rowColor, bool doRowSpan)
+        {
+            PdfPCell cell = new PdfPCell(new Phrase(cellText, FontFactory.GetFont("Arial", 9, 0, BaseColor.BLACK)));
+            cell.BackgroundColor = rowColor;
+            cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+            if (doRowSpan) cell.Rowspan = 2;
+            return cell;
+        }
+        private PdfPCell GetTotalCell(string cellText, BaseColor rowColor, bool isFirstCell)
+        {
+            PdfPCell cell = new PdfPCell(new Phrase(cellText, FontFactory.GetFont("Arial", 10, 1, BaseColor.BLACK)));
+            cell.BackgroundColor = rowColor;
+            cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+            if (isFirstCell) cell.Colspan = 6;
+
+            return cell;
+        }
+
+    }
+    class pdfPage : iTextSharp.text.pdf.PdfPageEventHelper
+    {
+        public override void OnStartPage(PdfWriter writer, Document doc)
+        {
+            base.OnStartPage(writer, doc);
+
+            if (doc.PageNumber == 1)
+            {
+                PdfPTable headerTbl = new PdfPTable(1);
+                headerTbl.WidthPercentage = 100;
+                headerTbl.TotalWidth = doc.PageSize.Width;
+
+                iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(HttpContext.Current.Server.MapPath("~/Content/images/CoverPage.png"));
+                logo.ScaleAbsolute(doc.PageSize.Width, doc.PageSize.Height);
+
+                PdfPCell cell = new PdfPCell();
+                cell.Border = Rectangle.NO_BORDER;
+                cell.CellEvent = new TestCellEvent()
+                {
+                    CellImage = logo
+                };
+
+                headerTbl.AddCell(cell);
+                headerTbl.WriteSelectedRows(0, -1, 0, 0, writer.DirectContent);
+            }
+        }
+
+        public override void OnEndPage(PdfWriter writer, Document doc)
+        {
+            base.OnEndPage(writer, doc);
+
+            if (doc.PageNumber > 1)
+            {
+                PdfPTable footerTbl = new PdfPTable(1);
+                footerTbl.WidthPercentage = 100;
+                footerTbl.TotalWidth = doc.PageSize.Width;
+
+                iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(HttpContext.Current.Server.MapPath("~/Content/images/PDFFooter.png"));
+                logo.ScaleToFit(doc.PageSize.Width, 500);
+
+                PdfPCell cell = new PdfPCell(new PdfPCell());
+                cell.Phrase = new Phrase(doc.PageNumber.ToString());
+                cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                cell.VerticalAlignment = Element.ALIGN_BOTTOM;
+                cell.PaddingTop = 90;
+                cell.PaddingRight = 60;
+                cell.Border = Rectangle.NO_BORDER;
+                cell.CellEvent = new TestCellEvent()
+                {
+                    CellImage = logo
+                };
+
+                footerTbl.AddCell(cell);
+                footerTbl.WriteSelectedRows(0, -1, 0, 105, writer.DirectContent);
+            }
+        }
+    }
+
+    class TestCellEvent : IPdfPCellEvent
+    {
+        public Image CellImage;
+        public void CellLayout(PdfPCell cell, Rectangle position, PdfContentByte[] canvases)
+        {
+            PdfContentByte cb = canvases[PdfPTable.BACKGROUNDCANVAS];
+            CellImage.SetAbsolutePosition(0, 0);
+            cb.AddImage(CellImage);
+        }
+    }
+}
